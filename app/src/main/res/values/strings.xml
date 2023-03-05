@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BetterHeadSpace</string>
+    <string name="chill">Chill</string>
+    <string name="gloomy">Gloomy</string>
+    <string name="happy">Happy</string>
+    <string name="surprise_me">Shuffle</string>
+    <string name="nintendo">Nintendo</string>
 </resources>
