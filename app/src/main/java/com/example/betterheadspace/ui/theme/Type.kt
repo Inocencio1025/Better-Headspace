@@ -2,9 +2,11 @@ package com.example.betterheadspace.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.betterheadspace.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -25,4 +27,9 @@ val Typography = Typography(
         fontSize = 12.sp
     )
     */
+
 )
+
+val rampartone = FontFamily(Font(R.font.rampartone_regular))
+
+val lilita = FontFamily(Font(R.font.lilitaone_regular))

@@ -10,6 +10,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
@@ -20,6 +21,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -55,6 +59,19 @@ fun ListeningScreen (navController: NavController, userMood: String) {
 
     //for background
     LinearGradient()
+
+    //clouds
+    Box(modifier = (Modifier
+        .fillMaxWidth(5f)
+        .fillMaxHeight(.4f))){
+        Image(
+            painter = painterResource(id = R.mipmap.ic_clouds_foreground),
+            contentDescription = "favorite",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxSize()
+                .align(alignment = Alignment.Center))
+    }
     Column {
         CreateHeaderText(text = userMood)
 
@@ -76,14 +93,17 @@ fun ListeningScreen (navController: NavController, userMood: String) {
                 onClick = {
                     isFavorite = !isFavorite
                     showFavToast(isFavorite, mContext)
-                }) {
+                },
+                colors= ButtonDefaults.buttonColors(backgroundColor = Color.Black)) {
 
 
                 if (!isFavorite){
                     Image(
                         painter = painterResource(id = R.drawable.ic_unfavorite),
                         contentDescription = "not favorite",
-                        modifier = Modifier.fillMaxSize())
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(color = Color.Black))
                 }
                 else {
                     Image(
@@ -109,7 +129,9 @@ fun ListeningScreen (navController: NavController, userMood: String) {
                         MusicPlayer.mMediaPlayer.pause()
                     else
                         MusicPlayer.mMediaPlayer.start()
-                }) {
+                },
+
+                colors= ButtonDefaults.buttonColors(backgroundColor = Color.Black)) {
 
 
                 if (isPlaying) {
@@ -117,14 +139,16 @@ fun ListeningScreen (navController: NavController, userMood: String) {
                         painter = painterResource(id = R.drawable.ic_pause),
                         contentDescription = "pause",
                         modifier = Modifier
-                            .fillMaxWidth()
+                            .fillMaxWidth(),
+                        contentScale = ContentScale.FillBounds
                     )
                 }
                 else {
                     Image(
                         painter = painterResource(id = R.drawable.ic_play),
                         contentDescription = "play",
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        contentScale = ContentScale.Fit
                     )
                 }
             }
@@ -132,12 +156,20 @@ fun ListeningScreen (navController: NavController, userMood: String) {
 
             // skip button
             Button(
+
+                colors= ButtonDefaults.buttonColors(backgroundColor = Color.Black),
                 modifier = Modifier
                     .width(72.dp)
                     .fillMaxHeight(),
-                onClick = { MusicPlayer.skipSong(mContext) }
+                onClick = { MusicPlayer.skipSong(mContext)
+
+                }
             ){
-                Text(text = "SKIP")
+                Text(
+                    text = "SKIP",
+                modifier = Modifier.fillMaxSize(),
+                color = Color.White,
+                textAlign = TextAlign.Center)
             }
         } //end row
 
@@ -168,11 +200,22 @@ fun ListeningScreen (navController: NavController, userMood: String) {
                 )
             }
 
+            //textfeild
+            var value by remember { mutableStateOf("") }
             Box(modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
+                .align(alignment = Alignment.CenterHorizontally)
                 //.background(color = Color.Red)
-            )
+            ) {
+                TextField(
+                    value = value,
+                    onValueChange = { newText ->
+                        value = newText
+                    },
+                    modifier = Modifier.align(alignment = Alignment.Center)
+                )
+            }
 
 
         }

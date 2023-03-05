@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -14,10 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.betterheadspace.ui.theme.lilita
+import com.example.betterheadspace.ui.theme.rampartone
 
 
 var userMood = ""
@@ -70,9 +74,12 @@ fun CreateChillButton(navController: NavController){
     }, modifier = Modifier
         .padding(24.dp)
         .fillMaxWidth()
+        .height(64.dp),
+        shape = RoundedCornerShape(50)
     ){
 
-        Text(text = "Chill")
+        Text(text = "Chill", fontFamily = lilita,
+            style = TextStyle(fontSize = 40.sp))
     }
 
 }
@@ -89,8 +96,11 @@ fun CreateGloomyButton(navController: NavController){
     }, modifier = Modifier
         .padding(24.dp)
         .fillMaxWidth()
+        .height(64.dp),
+        shape = RoundedCornerShape(50)
     ){
-        Text("Gloomy")
+        Text("Gloomy", fontFamily = lilita,
+            style = TextStyle(fontSize = 40.sp))
     }
 }
 
@@ -105,8 +115,14 @@ fun CreateHappyButton(navController: NavController){
     }, modifier = Modifier
         .padding(24.dp)
         .fillMaxWidth()
+        .height(64.dp),
+        shape = RoundedCornerShape(50)
     ){
-        Text(text = "Happy")
+        Text(
+            text = "Happy",
+            fontFamily = lilita,
+            style = TextStyle(fontSize = 40.sp)
+        )
     }
 }
 
@@ -122,8 +138,11 @@ fun CreateSurpriseMeButton(navController: NavController){
     }, modifier = Modifier
         .padding(24.dp)
         .fillMaxWidth()
+        .height(64.dp),
+        shape = RoundedCornerShape(50)
     ){
-        Text(text = "Surprise Me")
+        Text(text = "Surprise Me", fontFamily = lilita,
+            style = TextStyle(fontSize = 40.sp))
     }
 }
 
@@ -138,8 +157,11 @@ fun CreateNintendoButton(navController: NavController){
     }, modifier = Modifier
         .padding(24.dp)
         .fillMaxWidth()
+        .height(64.dp),
+        shape = RoundedCornerShape(50)
     ){
-        Text(text = "Nintendo")
+        Text(text = "Nintendo", fontFamily = rampartone,
+            style = TextStyle(fontSize = 40.sp))
     }
 }
 
